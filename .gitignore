@@ -1,0 +1,17 @@
+# Salesforce
+.sfdx/
+.localdevserver/
+.salesforce/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

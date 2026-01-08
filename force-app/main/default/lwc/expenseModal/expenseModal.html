@@ -1,0 +1,59 @@
+<template>
+    <section 
+    role="dialog" 
+    tabindex="-1" 
+    class="slds-modal slds-fade-in-open">
+    
+    <div class ="slds-modal__container slds-modal__container_medium">
+
+        <!--================= HEADER =================-->
+        <header class="slds-modal__header slds-theme_default slds-border_bottom">
+            <h2 class="slds-text-heading_medium">New Expense</h2>
+        </header>
+
+        <!--================= Body =================-->
+        <div class="slds-modal__content slds-theme_default slds-p-vertical_small slds-p-horizontal_medium">
+            <lightning-record-edit-form 
+                object-api-name="Expense__c" 
+                onsuccess={handleSuccess}>
+                
+                <lightning-messages></lightning-messages>
+                 <div class="slds-grid slds-gutters">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field field-name="Name"></lightning-input-field>
+                        <lightning-input-field field-name="Amount__c"></lightning-input-field>
+                        <lightning-input-field field-name="ExpenseDate__c"></lightning-input-field>
+                    </div>
+                
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field field-name="ExpenseCategory__c"></lightning-input-field>
+                        <lightning-input-field field-name="ExpenseDescription__c"></lightning-input-field>
+                        <lightning-input-field field-name="ExpenseStatus__c"></lightning-input-field>
+                    </div>
+                </div>
+        
+        <!--================= FOOTER =================-->
+        <footer class = "slds-modal__footer slds-grid slds-grid_align-end slds-theme_shade slds-border_top">
+            <lightning-button 
+                label="Cancel" 
+                onclick={handleClose} 
+                variant="neutral">
+            </lightning-button>
+        
+            <lightning-button
+                label="Save"
+                type="submit"
+                variant="brand"
+                class="slds-m-left_small">
+            </lightning-button>
+        </footer>
+
+            </lightning-record-edit-form>
+        </div>
+    
+    </div>
+    </section>
+
+    <!--================= BACKDROP =================-->
+    <div class="slds-backdrop slds-backdrop_open slds-backdrop_light"></div>
+</template>

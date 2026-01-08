@@ -1,0 +1,105 @@
+<template>
+    <lightning-card 
+    variant="Narrow" 
+    title="Expenses" 
+    icon-name="standard:expense">
+
+    <!--================= FILTERS =================-->
+    <div class="slds-p-horizontal_medium slds-p-top_small slds-p-bottom_small">
+        <lightning-layout 
+        multiple-rows 
+        padding="horizontal-medium">
+                
+        <!-- Start Date -->
+        <lightning-layout-item size="3">
+            <lightning-input
+                type="date"
+                label="Start Date"
+                value={startDate}
+                onchange={handleStartDateChange}>
+            </lightning-input>
+        </lightning-layout-item>
+
+        <!-- End Date -->
+        <lightning-layout-item size="3">
+            <lightning-input
+                type="date"
+                label="End Date"
+                value={endDate}
+                onchange={handleEndDateChange}>
+            </lightning-input>
+        </lightning-layout-item>
+
+        <!-- Category -->
+        <lightning-layout-item size="3">
+            <lightning-combobox
+                label="Category"
+                value={category}
+                options={categoryOptions}
+                onchange={handleCategoryChange}>
+            </lightning-combobox>
+        </lightning-layout-item>
+
+        <!-- Apply Button (aligned with fields) -->
+        <lightning-layout-item size="3">
+            <div class="slds-form-element">
+                <label class="slds-form-element__label">&nbsp;</label>
+                <div class="slds-form-element__control">
+                    <lightning-button
+                        variant="neutral"
+                        label="Apply"
+                        onclick={handleApplyFilters}>
+                    </lightning-button>
+                </div>
+            </div>
+        </lightning-layout-item>
+            
+        </lightning-layout>
+    </div>
+
+    <!--================= ACTIONS =================-->
+    <div class="slds-p-horizontal_medium slds-m-top_medium slds-m-bottom_small">
+        <lightning-button
+            label="New Expense"
+            variant="brand"
+            onclick={openModal}>
+        </lightning-button>
+    </div>
+
+    <!--================= MODAL =================-->
+    <template if:true={isModalOpen}>
+        <c-expense-modal onclose={handleModalClose}></c-expense-modal>
+    </template>
+    
+    <!--================= TABLE =================-->
+    <template if:true={expenses}>
+        <div class="slds-p-horizontal_medium slds-m-bottom_medium">
+          <lightning-datatable
+             key-field="Id"
+             data={expenses}
+             columns={columns}>
+          </lightning-datatable>
+
+        <div class="slds-text-align_center slds-text-color_weak slds-m-top_small">
+           Showing recent expenses
+        </div>
+
+        </div>
+    </template>
+
+    <!--================= ERROR =================-->
+    <template if:true={error}>
+            <p class="slds-text-color_error slds-p-horizontal_medium">
+                {error}
+            </p>
+    </template>
+    
+    <!--================= EMPTY STATE =================-->
+    <template if:false={hasExpenses}>
+            <p class="slds-p-horizontal__medium slds-text-color_weak">
+                No data or it hasn't loaded yet
+            </p>
+    </template>
+        
+    </lightning-card>
+</template>
