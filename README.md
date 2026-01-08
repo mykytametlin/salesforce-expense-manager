@@ -67,6 +67,15 @@ The application is based on a custom Salesforce object:
  
 ## Screenshots
 
+### Expense List
+![Expense List](screenshots/expense-list.png)
+
+### Filtering Expenses
+![Filtering Expenses](screenshots/expense-filters.png)
+
+### Create New Expense
+![Create New Expense](screenshots/expense-modal.png)
+
 ## Future Improvements
 
 Possible future enhancements include:
@@ -97,3 +106,4 @@ The following resources were used during development:
 - Trailhead modules related to Lightning Web Components and Apex
 - Online Salesforce development courses
 - Hands-on experimentation within a Salesforce Developer Org
+
